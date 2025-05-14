@@ -1,0 +1,12 @@
+#
+#
+#  System Definitions
+#
+Verbs:
+"List": Objects: ["Main Controller", "PLCS","Valve_Group","Schedule"]; Adverbs: []
+"Run": Objects: ["Schedule", "Schedule_Step","Clean_Filter","Resistance_Check","Check_Sprinkler"]; Adverbs: []
+Objects and Adjectives:
+"house": ["red", "big"]
+"car": ["blue", "small"]
+"race": ["long", "short"]
+"track": ["wide", "narrow"

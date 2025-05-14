@@ -1,0 +1,99 @@
+
+#### first set of instructions
+
+design a python module which has the following functions
+
+Start_Definition()
+Initializes the Definition Dictionary
+
+Define_Action_Functions( List_of_Action_Functions)
+Defines a list of Action Functions which can be used
+Must be the first function that is called after Start_Definition
+
+Start_Verb_Definition( Name, Help_String, Action_Function )
+Name - String
+Help_String - String
+Action_function -String
+
+The Function cannot be called within a Start_Verb_Definition 
+The Function can be called once an End_Verb_Definitin or End_Object_Definition is called
+
+This function adds to the definition dictionary an entry with key the Name Variable and the entry a dictionary with the fields
+    name - string
+     help -string
+     action - string
+      objects -- empty dictionary
+      adjectives -- empty dictionary
+Note the dictionary entry must not have been previously defined
+
+End_Verb_Definition()
+  -- clears verb definition and allows new verbs to be defined
+End_Definition()
+  -- Definition Dictionary is returned as a json object
+
+Generate Python code with naming and variable names according to Python Style Guide
+
+     
+
+#### second set of instructions
+
+Add the following functions
+
+Add_Adverb(name,description)
+   This function is valid only during verb definition
+   This function added to the adverb list of the verb definition a dictionary element
+     entry  name,   name must not be previously defined
+     dictionary element
+         name - name
+         description -- description
+              Note description field can be blank  
+           
+#### Third Set of Instructions
+Add the following functions
+
+
+
+Define_Object( name, description )
+  Will add an entry to the verbs object dictionary the following entry
+   name name
+   description description
+   adjective empty dictionary
+   name must be unique to the in the object dictionary 
+   
+   Define_Object cannot be called again until End_Object is called
+   Also End_Verb cannot be called until End_Object is called
+
+Add_Adjective(name,description)
+    function adds an entry to the adjective dictionary field of object
+     entry must not have been previously called
+      Function can only be called in the scope of Define Object
+End_Object_Defintion()
+   Terminates Object Definition context
+
+
+##########################  End of Definitions
+###### Error found correction instructions
+In the function 
+
+ def add_adverb(self, name, description):
+        """Add an adverb to the current verb's adjectives dictionary."""
+        if not self._is_defining_verb:
+            raise DefinitionError("Can only add adverbs during an active verb definition.")
+        if self._is_defining_object:
+            raise DefinitionError("Cannot add adverbs while defining an object.")
+        if not isinstance(name, str) or not isinstance(description, str):
+            raise DefinitionError("Name and description must be strings.")
+        
+        current_adjectives = self._definition_dict[self._current_verb]["adjectives"]
+        if name in current_adjectives:
+            raise DefinitionError(f"Adverb '{name}' is already defined for verb '{self._current_verb}'.")
+        
+        current_adjectives[name] = {
+            "name": name,
+            "description": description
+        }
+
+self._definition_dict[self._current_verb]["adjectives"] should be self._definition_dict[self._current_verb]["adverbs"]
+
+This affects the define_verb function
+
