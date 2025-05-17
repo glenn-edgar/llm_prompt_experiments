@@ -1,6 +1,6 @@
-Instructions for Grok: Parsing Verb-Object Sentences with Attributes
-Overview
-Grok will parse input sentences in the form "verb object [adverb/adjective]" (e.g., "Paint house red," "Run race quickly") and generate a JSON structure. The parsing will:
+
+
+parse input sentences in the form "verb object [adverb/adjective]" (e.g., "Paint house red," "Run race quickly") and generate a JSON structure. The parsing will:
 Verify terms against a predefined structure of supported verbs, objects, adverbs, and adjectives.
 Correct misspelled words by mapping them to the closest supported term.
 Include invalid adverbs or adjectives in the output, using "match" fields to flag errors.
@@ -172,8 +172,7 @@ Objects and Adjectives:
 "track": ["wide", "narrow"]
 
 
-input text 
+input text
 "Run rase sloowly"
 
-Limit output to generated json structure
-
+ 
